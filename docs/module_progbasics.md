@@ -67,14 +67,32 @@
     values = my_dictionary.values()
 
 #### What does it mean that an object is immutable in Python?
+    Most of the python objects are immuteable, like booleans,integers,floats,strigns,tuples.The definition  for immutable is : An immutable object is an object whose value cannot change. An object created and given a value is assigned some space in memory. The variable name bound to the object points to that place in memory.
+
 #### What is conditional expression in Python?
+    Conditional expressions are operators that evaluate something based on a condition being True or False.
+    for ex: min = a if a < b else b
+
 #### What are different types of arguments in Python?
+    1.default arguments def greet(name,msg):
+    2.keyword arguments def greet(name = "Bruce",msg = "Hello there")
+    3.positional arguments def greet("Bruce", msg="HelloThere")
+    4.arbitrary positional arguments
+    5.arbitrary keyword arguments
 #### What is variable shadowing? (context: variable scope)
+    Variable shadowing is when you have a variable declaired in a certain scope such as method or a class, has the same name as a variable declared in the outer/global scope. This is known as name masking at the level of identifiers. The outer scope is shadowed by the variable in the inner scope, and the inner variable is is masking the outer indentifier.
 #### What can happen if you try to delete/drop/add an item from a List, while you are iterating over it in Python?
 #### What is the "golden rule" of variable scoping in Python (context: LEGB)? What is the lifetime of variables?
 #### If you need to access the iterator variable after a for loop, how would you do it in Python?
 #### What type of elements can a list contain in Python?
+    Lists can contain arbitrary objects.Lists can contain strings integers and objects.All items in a list can be the same type, or different. Since everything in Python is an object, a list could contain objects such as functions or classes or even modules. 
+    
 #### What is slice operator in Python and how to use?
+    slice(start,end,step) -> is a function in python, which returns a slice object. Slice object is used to specify how to silce a sequence.
+    start maarks the start of the slicing and end is where to end it.You can use the step parameter to specify to slice only every n-th item.
+    ex:
+    slice(1,5,2) -> this will slice a string from the 1st charachter to the 4th as the last is not in the slicing sequence. And the slice will only slice every 2nd item
+
 #### What arithmetic operators (+,*,-,/) can be used on lists in Python? What do they do?
 #### What is the purpose of the in and not in membership operators in Python?
 #### What does the + operator mean when used with strings in Python?
@@ -85,17 +103,18 @@
 #### What is the difference between list/set/dictionary comprehension and a generator expression in Python?
 #### Does the order of the function definitions matter in Python? Why?
 #### What does unpacking mean in Python?
+    Unpacking in Python refers to an operation that consists of assigning an iterable of values to a tuple (or list) of variables in a single assignment statement. As a complement, the term packing can be used when we collect several values in a single variable using the iterable unpacking operator, *.
 #### What happens when you try to assign the result of a function which has no return statement to a variable in Python?
 
 ## Software engineering
 
-### Debugging
+### Debugging -----------------------------------------------------------------------------------------------------------------------------
 
 #### What techniques can you use while debugging a program in Python?
 #### What does step over, step into and step out mean while using the debugger?
 #### How can you start to debug a program from a certain line using the debugger?
 
-### Version control
+### Version control -----------------------------------------------------------------------------------------------------------------------------
 
 #### What are the advantages of using a version control system?
 #### What is the difference between the working directory, the staging area and the repository in git?
@@ -107,10 +126,21 @@
 
 ## Software design
 
-### Clean code
-
+### Clean code  -----------------------------------------------------------------------------------------------------------------------------
 #### What does clean code mean?
+    A clean code is a code that is easy to understand and easy to change.
+        -easy to understand the execution flow of the entire application
+        -easy to understand how the different objects collaborate with each other
+        -easy to understand the role and responsibility of each class
+        -easy to understand what each method does
+        -easy to understand what is the purpose of each expression and variable
+
 #### What steps do we usually do during a clean code refactoring?
+    1. You finish the code, making sure the software functions as per requested.
+    2. You run through the code and do small changes. Understanding your code better, changing few things. Removing all duplications/dead code.
+    3. Go through the code and :
+        - moving features between objects in order to better distribute functionality among classes/functions.Meaning to move functionality to solo class/functions
+        - simplifying conditional expressions, variable names for easier understanding.
 
 ### Error handling
 
@@ -121,11 +151,9 @@
 #### What does the else and finally statement do in a try-except block in Python?
 
 ## Software Development Methodologies
-
 #### What is the main goal of a retrospective meeting?
 
 ## Programming environment
-
 ### Unix
 
 #### What is UNIX and what is Linux?
