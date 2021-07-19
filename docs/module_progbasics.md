@@ -1,4 +1,4 @@
-# Programming Basics questions
+ # Programming Basics questions
 
 ## Computer science
 
@@ -17,10 +17,35 @@
 ### Algorithms ---------------------------------------------------------------------------------------------------------------------------------
 
 #### Fibonacci sequences. Write a method (or pseudo code), that generates the Fibonacci sequences.
+
+    def fib(n):
+        if n > 1:
+            return fib(n-1) + fib(n-2)
+        return n
+
+    #### f(n) = f(n-1)+f(n-2)
+    
 #### How do you find a max value in a list/array if you can’t use any built-in functions?
+    def max_of(list):
+        max = 0
+        for index in range(0, len(list)):
+            if(array[index] > max):
+                max = array[index]
+        return max
 #### How do you find the average of values in a list/array if you can’t use any built-in functions?
+    def avarage_of(lst):
+        return sum(lst) // len(lst)
 #### What do we call an *in-place* sort?
+    A sort algorithm in which the sorted items occupy the same storage as the original ones. These algorithms may use o(n) additional memory for bookkeeping, but at most a constant number of items are kept in auxiliary memory at any time.
 #### Explain an algorithm which sorts a list!
+    def bubbleSort(arr):
+        n = len(arr)
+        # iteration through elements
+        for i in range(n):
+            for j in range(0, n-i-1):
+                #we check elements in pairs.If the first element is bigger than the one after it. we swap them, then we move onto the next pair. We keep swapping until we cant find bigger elements before another
+                if arr[j] > arr[j+1] :
+                    arr[j], arr[j+1] = arr[j+1], arr[j]
 
 ### Programming paradigms - procedural ---------------------------------------------------------------------------------------------------------
 
@@ -37,34 +62,34 @@
 ### Programming languages - Python  ------------------------------------------------------------------------------------------------------------
 
 #### How do you use a dictionary in Python?
-# 1. Declaring a dictionary: key-value pair, immutable types, using {} brackets
-    my_dictionary = {} -> This will be and empty dictionary
-# dictionary can be created using the dict() method:
-    my_dictionary = dict({1:'rose',2:'pan'})
-# 2. adding/updating items:
-    my_dictionary['first_name'] = "Balogh" 
-# this syntax will add the new item to the dictionary if the key does not exist already, if it does exist, it will update the value with "Balogh"
-# 3. removing items:
-# Two ways of removing items : Whenever you remove item first you look for the key you would like to remove
-    del my_dictionary['first_name'] 
-# it will remove the matches for first_name variable and remove all of its occurences. It will raise KeyError if the key does not exist
-    my_dictionary.pop(first_name, None) 
-# It will do the same, but has 2 attributes. First is the key you are looking for , second one is the a value that should be returned if the key is not found.
-# all the items can be deleted from a dictionary at once using clear() method on the dictionary
-# 4. accessing elements:
-    my_dictionary['first_name'] or my_dictionary[1] or my_dictionary.get(1) -> all will result in getting the key and value of the first element of the dictionary
-# 6. Iteration:
-# Dictionaries are muteable, so you can iterate through them.Either using a for loop, or with the keys() and items() method:
-    for key in my_dictionary:
-        print(key)    
-# loop will return all the keys and their values as accessing the key in a dictionary will always get the value
-    my_items = my_dictionary.items()
-    print(my_items)
-# items() method will return a new view of the dictionaries items
-# if you just need to work with the keys of a dictionary, then you can use .keys(), which is a method that returns a new view object containing the dictionary’s keys
-    keys = my_dictionary.keys()
-# it’s also common to only use the values to iterate through a dictionary in Python. One way to do that is to use .values(), which returns a view with the values of the dictionary
-    values = my_dictionary.values()
+    # 1. Declaring a dictionary: key-value pair, immutable types, using {} brackets
+        my_dictionary = {} -> This will be and empty dictionary
+    # dictionary can be created using the dict() method:
+        my_dictionary = dict({1:'rose',2:'pan'})
+    # 2. adding/updating items:
+        my_dictionary['first_name'] = "Balogh" 
+    # this syntax will add the new item to the dictionary if the key does not exist already, if it does exist, it will update the value with "Balogh"
+    # 3. removing items:
+    # Two ways of removing items : Whenever you remove item first you look for the key you would like to remove
+        del my_dictionary['first_name'] 
+    # it will remove the matches for first_name variable and remove all of its occurences. It will raise KeyError if the key does not exist
+        my_dictionary.pop(first_name, None) 
+    # It will do the same, but has 2 attributes. First is the key you are looking for , second one is the a value that should be returned if the key is not found.
+    # all the items can be deleted from a dictionary at once using clear() method on the dictionary
+    # 4. accessing elements:
+        my_dictionary['first_name'] or my_dictionary[1] or my_dictionary.get(1) -> all will result in getting the key and value of the first element of the dictionary
+    # 6. Iteration:
+    # Dictionaries are muteable, so you can iterate through them.Either using a for loop, or with the keys() and items() method:
+        for key in my_dictionary:
+            print(key)    
+    # loop will return all the keys and their values as accessing the key in a dictionary will always get the value
+        my_items = my_dictionary.items()
+        print(my_items)
+    # items() method will return a new view of the dictionaries items
+    # if you just need to work with the keys of a dictionary, then you can use .keys(), which is a method that returns a new view object containing the dictionary’s keys
+        keys = my_dictionary.keys()
+    # it’s also common to only use the values to iterate through a dictionary in Python. One way to do that is to use .values(), which returns a view with the values of the dictionary
+        values = my_dictionary.values()
 
 #### What does it mean that an object is immutable in Python?
     Most of the python objects are immuteable, like booleans,integers,floats,strigns,tuples.The definition  for immutable is : An immutable object is an object whose value cannot change. An object created and given a value is assigned some space in memory. The variable name bound to the object points to that place in memory.
@@ -96,6 +121,8 @@
 #### What arithmetic operators (+,*,-,/) can be used on lists in Python? What do they do?
 #### What is the purpose of the in and not in membership operators in Python?
 #### What does the + operator mean when used with strings in Python?
+     With the + operator we explicitly concanate strings.
+     ex: return "my house" + "is" + "thebest" will result in "my houseisthebest"
 #### Explain f strings in Python?
     f strings or Literal String Interpolation is a new way in python3 to make string interpolation simpler. The string itself can be formatted in much the same way that you would with str.format(). F-strings provide a concise and convenient way to embed python expressions inside string literals for formatting. To create and f string you need to prefix the string with the letter f for ex.(f"This is an f string with {name}") where the {name} works similar to string formatting. If name is declared somewhere in our code, we can just refer to it. F-strings are faster than the two most commonly used string formatting mechanisms, which are % formatting and str.format(). 
 #### Name 4 iterable types in Python!
@@ -105,7 +132,7 @@
 #### What does unpacking mean in Python?
     Unpacking in Python refers to an operation that consists of assigning an iterable of values to a tuple (or list) of variables in a single assignment statement. As a complement, the term packing can be used when we collect several values in a single variable using the iterable unpacking operator, *.
 #### What happens when you try to assign the result of a function which has no return statement to a variable in Python?
-
+    ValueError will raise as if you dont return a variable  from a function then you cant access it outside of the function scope.
 ## Software engineering
 
 ### Debugging -----------------------------------------------------------------------------------------------------------------------------
