@@ -17,14 +17,11 @@
 ### Algorithms ---------------------------------------------------------------------------------------------------------------------------------
 
 #### Fibonacci sequences. Write a method (or pseudo code), that generates the Fibonacci sequences.
-
     def fib(n):
         if n > 1:
             return fib(n-1) + fib(n-2)
         return n
-
     #### f(n) = f(n-1)+f(n-2)
-    
 #### How do you find a max value in a list/array if you can’t use any built-in functions?
     def max_of(list):
         max = 0
@@ -108,6 +105,9 @@
     Variable shadowing is when you have a variable declaired in a certain scope such as method or a class, has the same name as a variable declared in the outer/global scope. This is known as name masking at the level of identifiers. The outer scope is shadowed by the variable in the inner scope, and the inner variable is is masking the outer indentifier.
 #### What can happen if you try to delete/drop/add an item from a List, while you are iterating over it in Python?
 #### What is the "golden rule" of variable scoping in Python (context: LEGB)? What is the lifetime of variables?
+    The LEGB rule is a kind of name lookup procedure, which determines the order in which Python looks up names. For example, if you reference a given name, 
+    then Python will look that name up sequentially in the local, enclosing, global, and built-in scope. If the name exists, 
+    then you’ll get the first occurrence of it. Otherwise, you’ll get an error.
 #### If you need to access the iterator variable after a for loop, how would you do it in Python?
 #### What type of elements can a list contain in Python?
     Lists can contain arbitrary objects.Lists can contain strings integers and objects.All items in a list can be the same type, or different. Since everything in Python is an object, a list could contain objects such as functions or classes or even modules. 
@@ -120,6 +120,7 @@
 
 #### What arithmetic operators (+,*,-,/) can be used on lists in Python? What do they do?
 #### What is the purpose of the in and not in membership operators in Python?
+    They are used to check if an element is present in a sequence or not.
 #### What does the + operator mean when used with strings in Python?
      With the + operator we explicitly concanate strings.
      ex: return "my house" + "is" + "thebest" will result in "my houseisthebest"
@@ -129,6 +130,7 @@
     list,set,tuple,dictionary
 #### What is the difference between list/set/dictionary comprehension and a generator expression in Python?
 #### Does the order of the function definitions matter in Python? Why?
+    Order of the functions does not matter because you are just adding 2 new functions for example. But to actually access it you will need to write a look-up. YOu will need to call the function. And in order to have the right order you will need to call them in the main for example in the right order.
 #### What does unpacking mean in Python?
     Unpacking in Python refers to an operation that consists of assigning an iterable of values to a tuple (or list) of variables in a single assignment statement. As a complement, the term packing can be used when we collect several values in a single variable using the iterable unpacking operator, *.
 #### What happens when you try to assign the result of a function which has no return statement to a variable in Python?
@@ -144,12 +146,23 @@
 ### Version control -----------------------------------------------------------------------------------------------------------------------------
 
 #### What are the advantages of using a version control system?
+    Version control systems allow you to compare files, identify differences, and merge the changes if needed prior to committing any code. 
+    Versioning is also a great way to keep track of application builds by being able to identify which version is currently in development, QA, and production.
+    Version control systems are useful when working in a team. Whenever someone makes changes you can compare, and new developers can catch up and see the commit history.
 #### What is the difference between the working directory, the staging area and the repository in git?
+    Working directory is your computer where you work at. Your changes are only yours no one can see it.
+    Staging area is the area where you add the code you been working on, its the area where the code is kept if the repository, which is the "cloud" on github, has changes aswell. In this case the code is kept in staging area until you pull the changes and accept them.
 #### What are remote repositories in git?
+    A remote repository in Git, also called a remote, is a Git repository that's hosted on the Internet or another network.
 #### Why does a merge conflict occur?
+    A merge conflict is an event that occurs when Git is unable to automatically resolve differences in code between two commits.
 #### Through what series of commands could you put a new file into a remote repository connected to your existing local repository?
-#### What does it mean atomic commits and descriptive commit messages?
+    First You make a commit(git commit -m (message which is meaningful)) -> then you add it to the staging area git -add -> then you push it to the master branch with git push
+#### What does it mean atomic commits and descriptive commit messages?    
+    Atomic commit means you make a commit every time you make changes or finish a feature, making commit after 2 feature chagne doesnt not go as an atomic commit. 
+    Descriptive commit messages mean when you give a commit message you describe shotrly but meaningfully the changes and modifications you made on the feature/programme.
 #### What’s the difference between git and GitHub?
+    Git is a version control system that lets you manage and keep track of your source code history. GitHub is a cloud-based hosting service that lets you manage Git repositories.
 
 ## Software design
 
@@ -179,18 +192,36 @@
 
 ## Software Development Methodologies
 #### What is the main goal of a retrospective meeting?
+    Gather data and insights from their team (what went well, what went poorly, etc.)
+    Discuss the data and insights and make action items around them.
+    Make a plan for improvements on the next sprint.
 
 ## Programming environment
 ### Unix
 
 #### What is UNIX and what is Linux?
+    Linux is an operating system built by Linus Torvalds at the University of Helsinki in 1991. 
+    The UNIX OS was born in the late 1960s. AT&T Bell Labs released an operating system called Unix written in C, which allows quicker modification, acceptance, and portability.
 #### What do we call the shell in Linux?
+     Bash which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, sh , written by Steve Bourne
 #### What does root means in a Linux environment?
+    root is the user name or account that by default has access to all commands and files on a Linux
 #### How do you access your personal files in Linux?
 #### How can you install an application in Linux?
+    sudo apt-get install file-name
 #### What is package management in Linux, what are repositories?
 #### How do you navigate in the filesystem with the command line?
+    use cd command to navigate between folders , and ls to list the content of the folder you are located in
 #### What does the following commands do: mkdir, rm, cat, cp, touch?
+    mkdir : creates a folder
+    rm : rm command is used to delete directories and the contents within them
+    cat: will show the content of a given file
+    cp: cp stands for copy. This command is used to copy files or group of files or directory.
+    touch: create files 
 #### How can you look up what does a command do in Linux if you have no internet connection?
 #### What does the following commands do: head, tail, more, less?
+    head : head command is used to view the first lines of any text file
+    tail: the tail command will display the last ten lines of a text file
+    more: more command is used to view the text files in the command prompt
+    less: it is command line utility that displays the contents of a file or a command output, one page at a time
 #### How do you download a file from internet using the terminal?
