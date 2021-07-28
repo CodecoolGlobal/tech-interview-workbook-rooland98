@@ -5,10 +5,11 @@
 ### Data structures  --------------------------------------------------------------------------------------------------------------------------
 
 #### What is the purpose of a list (array in some programming languages) data structure? Name some methods of it!
-    A list in python is a data  structure that is mutable/changeable,its an ordered sequence of elements.Lists are useful when u want to work with more values , they  let you work with more items at once, allows you to perform methods at once on multiple values, it keeps data together, 
+    A list in python is a data  structure that is mutable/changeable,its an ordered sequence of elements.Lists are useful when u want to work with more values , they  let you work with more items at once, allows you to perform methods at once on multiple values, it keeps data together.
+    METHODS%!!!!!!
 #### What is the difference between a list/array and a set?
     -all the items in a set is unique, so there cant be duplicates
-    -sets are unordered, meaning they appear in a different order every time you use them
+    -sets are unordered, meaning they appear in a different order every time you use themx
     -sets only contain hashable items, you use hash lookup to find elements in a set
     -sets are unindexed
 #### What is the purpose and methods of a dictionary/map data structure?
@@ -108,7 +109,6 @@
     The LEGB rule is a kind of name lookup procedure, which determines the order in which Python looks up names. For example, if you reference a given name, 
     then Python will look that name up sequentially in the local, enclosing, global, and built-in scope. If the name exists, 
     then you’ll get the first occurrence of it. Otherwise, you’ll get an error.
-#### If you need to access the iterator variable after a for loop, how would you do it in Python?
 #### What type of elements can a list contain in Python?
     Lists can contain arbitrary objects.Lists can contain strings integers and objects.All items in a list can be the same type, or different. Since everything in Python is an object, a list could contain objects such as functions or classes or even modules. 
     
@@ -127,7 +127,8 @@
 #### Explain f strings in Python?
     f strings or Literal String Interpolation is a new way in python3 to make string interpolation simpler. The string itself can be formatted in much the same way that you would with str.format(). F-strings provide a concise and convenient way to embed python expressions inside string literals for formatting. To create and f string you need to prefix the string with the letter f for ex.(f"This is an f string with {name}") where the {name} works similar to string formatting. If name is declared somewhere in our code, we can just refer to it. F-strings are faster than the two most commonly used string formatting mechanisms, which are % formatting and str.format(). 
 #### Name 4 iterable types in Python!
-    list,set,tuple,dictionary
+    an iterable object is a collection of elements that you can loop through one element at a time.
+    Python has four built-in iterable types: list, dict, tuple, and set
 #### What is the difference between list/set/dictionary comprehension and a generator expression in Python?
 #### Does the order of the function definitions matter in Python? Why?
     Order of the functions does not matter because you are just adding 2 new functions for example. But to actually access it you will need to write a look-up. YOu will need to call the function. And in order to have the right order you will need to call them in the main for example in the right order.
@@ -142,6 +143,7 @@
 #### What techniques can you use while debugging a program in Python?
 #### What does step over, step into and step out mean while using the debugger?
 #### How can you start to debug a program from a certain line using the debugger?
+    You need to place a breakpoint at the start of the function/part of code you want to debug. You can do that by clicking before line number in vscode.
 
 ### Version control -----------------------------------------------------------------------------------------------------------------------------
 
@@ -157,7 +159,10 @@
 #### Why does a merge conflict occur?
     A merge conflict is an event that occurs when Git is unable to automatically resolve differences in code between two commits.
 #### Through what series of commands could you put a new file into a remote repository connected to your existing local repository?
-    First You make a commit(git commit -m (message which is meaningful)) -> then you add it to the staging area git -add -> then you push it to the master branch with git push
+    git status (to check for rmodifications to make sure)
+    git add -A where -A means all mods
+    git commit -m where -m means a message which should describe the changes
+    git push to push all changes to development branch
 #### What does it mean atomic commits and descriptive commit messages?    
     Atomic commit means you make a commit every time you make changes or finish a feature, making commit after 2 feature chagne doesnt not go as an atomic commit. 
     Descriptive commit messages mean when you give a commit message you describe shotrly but meaningfully the changes and modifications you made on the feature/programme.
@@ -185,11 +190,28 @@
 ### Error handling
 
 #### What is exception handling?
+    An exception can be defined as an unusual condition in a program resulting in the interruption in the flow of the program.
+    Whenever an exception occurs, the program stops the execution, and thus the further code is not executed. 
+    Therefore, an exception is the run-time errors that are unable to handle to Python script. An exception is a Python object that represents an error
+    Python provides a way to handle the exception so that the code can be executed without any interruption. 
+    If we do not handle the exception, the interpreter doesn't execute all the code that exists after the exception.
+    
 #### What are the basics of exception handling in Python?
+    ZeroDivisionError: Occurs when a number is divided by zero.
+    NameError: It occurs when a name is not found. It may be local or global.
+    IndentationError: If incorrect indentation is given.
+    IOError: It occurs when Input Output operation fails.
+    EOFError: It occurs when the end of the file is reached, and yet operations are being performed.
 #### In which case should we catch an exception? Why?
+    If the Python program contains suspicious code that may throw the exception, we must place that code in the try block. 
+    The try block must be followed with the except statement, which contains a block of code that will be executed if there is some exception in the try block.
 #### What can/should we do with an exception in the ‘except’ block?
+    We can use the exception variable with the except statement. It is used by using the as keyword. this object will return the cause of the exception.
 #### What does the else and finally statement do in a try-except block in Python?
-
+    1 -> We can also use the else statement with the try-except statement in which, we can place the code which will be executed in the scenario if no exception occurs in the try block.
+    2 -> Python provides the optional finally statement, which is used with the try statement. It is executed no matter what exception occurs and used to release the external resource. 
+    The finally block provides a guarantee of the execution. We can use the finally block with the try block in which we can pace the necessary code, 
+    which must be executed before the try statement throws an exception.
 ## Software Development Methodologies
 #### What is the main goal of a retrospective meeting?
     Gather data and insights from their team (what went well, what went poorly, etc.)
@@ -210,6 +232,8 @@
 #### How can you install an application in Linux?
     sudo apt-get install file-name
 #### What is package management in Linux, what are repositories?
+    Package management is a method of installing, updating, removing, and keeping track of software updates from specific repositories.
+    A software repository, or “repo” for short, is a storage location for software packages.
 #### How do you navigate in the filesystem with the command line?
     use cd command to navigate between folders , and ls to list the content of the folder you are located in
 #### What does the following commands do: mkdir, rm, cat, cp, touch?
@@ -219,6 +243,8 @@
     cp: cp stands for copy. This command is used to copy files or group of files or directory.
     touch: create files 
 #### How can you look up what does a command do in Linux if you have no internet connection?
+    type help in bash to list all available basic commads
+    sudo -h for apps to list applications related commands
 #### What does the following commands do: head, tail, more, less?
     head : head command is used to view the first lines of any text file
     tail: the tail command will display the last ten lines of a text file
