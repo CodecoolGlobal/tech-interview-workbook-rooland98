@@ -30,7 +30,6 @@
 #### What is the purpose and methods of a dictionary/map data structure?
 
     A dictionary is an unordered collection of items. Dictionaries have a key/value pairs and items that can be indexed using the key. A key can be any immutable type; strings and numbers can always be keys. Tuples can be used as keys if they contain only strings, and numbers. The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is easier to look up the items you are looking for thanks to the keys. 
-    It is a muteable data structure , so new items can be added/removed and items can be accessed. 
 
 ### Algorithms 
 
@@ -151,13 +150,13 @@
 #### What can happen if you try to delete/drop/add an item from a List, while you are iterating over it in Python?
 #### What is the "golden rule" of variable scoping in Python (context: LEGB)? What is the lifetime of variables?
 
-    The LEGB rule is a kind of name lookup procedure, which determines the order in which Python looks up names. For example, if you reference a given name, 
+    The LEBG rule is a kind of name lookup procedure, which determines the order in which Python looks up names. For example, if you reference a given name, 
     then Python will look that name up sequentially in the local, enclosing, global, and built-in scope. If the name exists, 
     then you’ll get the first occurrence of it. Otherwise, you’ll get an error.
 
 #### What type of elements can a list contain in Python?
 
-    Lists can contain arbitrary objects.Lists can contain strings integers and objects.All items in a list can be the same type, or different. Since everything in Python is an object, a list could contain objects such as functions or classes or even modules. 
+    Lists can contain arbitrary objects. Lists can contain strings integers and objects.All items in a list can be the same type, or different. Since everything in Python is an object, a list could contain objects such as functions or classes or even modules. 
     
 #### What is slice operator in Python and how to use?
 
@@ -259,29 +258,17 @@
 
 #### What steps do we usually do during a clean code refactoring?
 
-    1. You finish the code, making sure the software functions as per requested.
-    2. You run through the code and do small changes. Understanding your code better, changing few things. Removing all duplications/dead code.
-    3. Go through the code and :
-        - moving features between objects in order to better distribute functionality among classes/functions.Meaning to move functionality to solo class/functions
-        - simplifying conditional expressions, variable names for easier understanding.
-
 ### Error handling
 
 #### What is exception handling?
 
     An exception can be defined as an unusual condition in a program resulting in the interruption in the flow of the program.
     Whenever an exception occurs, the program stops the execution, and thus the further code is not executed. 
-    Therefore, an exception is the run-time errors that are unable to handle to Python script. An exception is a Python object that represents an error
+    An exception is a Python object that represents an error.
     Python provides a way to handle the exception so that the code can be executed without any interruption. 
     If we do not handle the exception, the interpreter doesn't execute all the code that exists after the exception.
     
 #### What are the basics of exception handling in Python?
-
-    ZeroDivisionError: Occurs when a number is divided by zero.
-    NameError: It occurs when a name is not found. It may be local or global.
-    IndentationError: If incorrect indentation is given.
-    IOError: It occurs when Input Output operation fails.
-    EOFError: It occurs when the end of the file is reached, and yet operations are being performed.
 
 #### In which case should we catch an exception? Why?
 
@@ -294,7 +281,7 @@
 
 #### What does the else and finally statement do in a try-except block in Python?
 
-    1 -> We can also use the else statement with the try-except statement in which, we can place the code which will be executed in the scenario if no exception occurs in the try block.
+    1 -> We can use the else statement with the try-except statement in which, we can place the code which will be executed in the scenario if no exception occurs in the try block.
     2 -> Python provides the optional finally statement, which is used with the try statement. It is executed no matter what exception occurs and used to release the external resource. 
     The finally block provides a guarantee of the execution. We can use the finally block with the try block in which we can pace the necessary code, 
     which must be executed before the try statement throws an exception.
