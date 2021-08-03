@@ -29,7 +29,23 @@
 
 #### What is the purpose and methods of a dictionary/map data structure?
 
-    A dictionary is an unordered collection of items. Dictionaries have a key/value pairs and items that can be indexed using the key. A key can be any immutable type; strings and numbers can always be keys. Tuples can be used as keys if they contain only strings, and numbers. The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is easier to look up the items you are looking for thanks to the keys. 
+    The dictionary is a mutable data type. Dictionaries are indexed by keys, which can be any immutable type. Strings and numbers can always be keys. Tuples can be used as keys if they contain only strings, numbers or tuples; if a tuple contains any mutable object either directly or indirectly, it cannot be used as a key. A dictionary is a set of key-value pairs, with the requirement that the keys are unique (within one dictionary). The main operations on a dictionary are storing a value with some key and extracting the value given the key. It is also possible to delete a key-value pair with the del statement. If you store a value using a key that is already in use, the old value associated with that key is forgotten.
+
+    Dictionary methods:
+
+    list(my_dict): Return a list of all the keys in the dictionary, in insertion order.
+    sorted(my_dict): Return a list of all the keys in the dictionary, in a specified order.
+    my_dict.clear(): Remove all the elements from the dictionary.
+    my_dict.copy(): Return a copy of the dictionary.
+    my_dict.get(k): Return the value of the specified key k.
+    my_dict.keys(): Return a list containing the dictionary's keys.
+    my_dict.values(): Return a list of all the values in the dictionary.
+    my_dict.items(): Return a list containing a tuple for each key-value pair.
+    my_dict.pop(k): Remove and return the element with the specified key k.
+    my_dict.popitem(): Remove and return a tuple of the last inserted key-value pair.
+    my_dict.setdefault(k, v): Return a value of the specified key k. If the key does not exist, insert the key with the specified value v.
+    my_dict.update({k: v, k: v, ...}): Update the dictionary with the specified key-value pairs. If a key already extists, the old value associated with that key is forgotten.
+    my_dict.fromkeys(x, y): Return a dictionary with the specified keys and values. Here, x could represent a list ['key1', 'key2', ...] of keys, y could represent an integer value 1.
 
 ### Algorithms 
 
@@ -43,45 +59,57 @@
 
 #### How do you find a max value in a list/array if you can’t use any built-in functions?
 
-    def max_of(list):
-        max = 0
-        for index in range(0, len(list)):
-            if(list[index] > max):
-                max = list[index]
+    def max_of_list(list):
+        max = None
+        for number in list:
+            if max == None:
+                max = number
+            elif (number > max):
+                max = number
         return max
 
 #### How do you find the average of values in a list/array if you can’t use any built-in functions?
 
     def avarage(list):
-        sum_of_list = 0
-        for num in list:
-            sum_of_list += num
-        return sum // len(list)
+        length = 0
+        sum = 0
+        for number in list:
+            length += 1
+            sum += number
+        return sum / length
 
 #### What do we call an *in-place* sort?
 
     A sort algorithm in which the sorted items occupy the same storage as the original ones. These algorithms may use o(n) additional memory for bookkeeping, but at most a constant number of items are kept in auxiliary memory at any time.
+    A method like list.sort() modifies the object (rather than create and modify a new one).
 
 #### Explain an algorithm which sorts a list!
+    A bubble-sort algorithm iterates through the given list, and compares each element's value to the next element's value. Given the list is to be sorted in ascending order, the algorithm switches the elements' places every time an element's value is greater than the value of the next element.
 
     def bubbleSort(arr):
         n = len(arr)
-        # iteration through elements
         for i in range(n):
             for j in range(0, n-i-1):
-                #we check elements in pairs.If the first element is bigger than the one after it. we swap them, then we move onto the next pair. We keep swapping until we cant find bigger elements before another
                 if arr[j] > arr[j+1] :
                     arr[j], arr[j+1] = arr[j+1], arr[j]
+        return arr
 
 ### Programming paradigms - procedural
 
 #### What is the call stack?
 
-    The call stack is what a program uses to keep track of method calls.
+    The call stack is what a program uses to keep track of method calls. It is a dynamic data structure stored in the RAM of the computer,maintained by the OS.
+    Its purpose is to control the way procedures and functions call each other, and to control the way they pass parameters to each other. 
+    The call stack is made up of stack frames—one for each method call.
+    A stack frame can store :
+    -Local variables
+    -Arguments passed into the method
+    -Information about the caller's stack frame
+    -The return address—what the program should do after the function returns (i.e.: where it should "return to"). This is usually somewhere in the middle of the caller's code.
 
 #### What is “Stack overflow”?
 
-    A stack overflow is a programming error when too much memory is used on the call stack.
+    A stack overflow is a programming error when more memory is used on the call stack rather than what is available.
 
 #### What are the main parts of a function?
 
@@ -92,71 +120,52 @@
 
 ### Programming languages - Python
 #### How do you use a dictionary in Python?
-
-    # 1. Declaring a dictionary: key-value pair, immutable types, using {} brackets
-        my_dictionary = {} -> This will be and empty dictionary
-    # dictionary can be created using the dict() method:
-        my_dictionary = dict({1:'rose',2:'pan'})
-
-    # 2. adding/updating items:
-        my_dictionary['first_name'] = "Balogh" 
-    # this syntax will add the new item to the dictionary if the key does not exist already, if it does exist, it will update the value with "Balogh"
-
-    # 3. removing items:
-    # Two ways of removing items : Whenever you remove item first you look for the key you would like to remove
-        del my_dictionary['first_name'] 
-    # it will remove the matches for first_name variable and remove all of its occurences. It will raise KeyError if the key does not exist
-        my_dictionary.pop(first_name, None) 
-    # It will do the same, but has 2 attributes. First is the key you are looking for , second one is the a value that should be returned if the key is not found.
-    # all the items can be deleted from a dictionary at once using clear() method on the dictionary
-
-    # 4. accessing elements:
-        my_dictionary['first_name'] or my_dictionary[1] or my_dictionary.get(1) -> all will result in getting the key and value of the first element of the dictionary
-
-    # 6. Iteration:
-    # Either using a for loop, or with the keys() and items() method:
-        for key in my_dictionary:
-            print(key)    
-    # loop will return all the keys and their values as accessing the key in a dictionary will always get the value
-        my_items = my_dictionary.items()
-        print(my_items)
-    # items() method will return a new view of the dictionaries items
-    # if you just need to work with the keys of a dictionary, then you can use .keys(), which is a method that returns a new view object containing the dictionary’s keys
-        keys = my_dictionary.keys()
-    # it’s also common to only use the values to iterate through a dictionary in Python. One way to do that is to use .values(), which returns a view with the values of the dictionary
-        values = my_dictionary.values()
+    my_dict = {'a': 1, 'b': 2, 'c': 3}
+    my_dict = dict(a=1, b=2, c=3)
 
 #### What does it mean that an object is immutable in Python?
 
-    Most of the python objects are immuteable, like booleans,integers,floats,strigns,tuples.The definition  for immutable is : An immutable object is an object whose value cannot change. An object created and given a value is assigned some space in memory. The variable name bound to the object points to that place in memory.
+   An immutable object is an object whose value cannot change. 
+   An object created and given a value is assigned some space in memory. 
+   The variable name bound to the object points to that place in memory.
 
 #### What is conditional expression in Python?
 
     Conditional expressions are operators that evaluate something based on a condition being True or False.
+    conditional expressions are if,else,elif
     for ex: min = a if a < b else b
 
 #### What are different types of arguments in Python?
 
-    1.default arguments def greet(name,msg):
-    2.keyword arguments def greet(name = "Bruce",msg = "Hello there")
-    3.positional arguments def greet("Bruce", msg="HelloThere")
-    4.arbitrary positional arguments
-    5.arbitrary keyword arguments
+    1.default arguments (assigning default values with =)
+    2.keyword arguments (assigning values, disregarding argument positions)
+    3.arbitrary arguments (using packing/unpacking with *, **)
 
 #### What is variable shadowing? (context: variable scope)
 
     Variable shadowing is when you have a variable declaired in a certain scope such as method or a class, has the same name as a variable declared in the outer/global scope. This is known as name masking at the level of identifiers. The outer scope is shadowed by the variable in the inner scope, and the inner variable is is masking the outer indentifier.
 
 #### What can happen if you try to delete/drop/add an item from a List, while you are iterating over it in Python?
+
+    If you delete/drop an item from a list while iterating over it, the results will be inaccurate, 
+    due to the changed contents , the loop will skip some elements and/or end
+    If we add to the list while iterating over it, it could result in an infinite loop.
+
 #### What is the "golden rule" of variable scoping in Python (context: LEGB)? What is the lifetime of variables?
 
-    The LEBG rule is a kind of name lookup procedure, which determines the order in which Python looks up names. For example, if you reference a given name, 
-    then Python will look that name up sequentially in the local, enclosing, global, and built-in scope. If the name exists, 
-    then you’ll get the first occurrence of it. Otherwise, you’ll get an error.
+    The LEBG rule is a kind of name lookup procedure, which determines the order in which Python looks up names.
+
+    Local: Defined inside function/class
+    Enclosed: Defined inside enclosing functions (nested functions)
+    Global: Defined at the uppermost level
+    Built-in: Reserved names in Python built-in modules
+
+    Variables have different lifetimes, depending on their definition. E.g. a local variable exists as long as the function is being executed.
+    The golden rule means that variables should only be accessible where they are used. Avoiding using global variables as much as possible is standard.
 
 #### What type of elements can a list contain in Python?
 
-    Lists can contain arbitrary objects. Lists can contain strings integers and objects.All items in a list can be the same type, or different. Since everything in Python is an object, a list could contain objects such as functions or classes or even modules. 
+    Lists can contain any built-in data type.String,integer,boolean,function,classes,modules,etc.
     
 #### What is slice operator in Python and how to use?
 
@@ -166,6 +175,11 @@
     slice(1,5,2) -> this will slice a string from the 1st charachter to the 4th as the last is not in the slicing sequence. And the slice will only slice every 2nd item
 
 #### What arithmetic operators (+,*,-,/) can be used on lists in Python? What do they do?
+
+    The + operator concatenates two lists. In other words, it appends one list's elements to another's.
+    The * operator multiplies a list's elements by an integer.
+    The - and / operators are unsupported and result in an error.
+
 #### What is the purpose of the in and not in membership operators in Python?
 
     They are used to check if an element is present in a sequence or not.
@@ -184,28 +198,55 @@
     an iterable object is a collection of elements that you can loop through one element at a time.
     Python has four built-in iterable types: list, dict, tuple, and set
 
-#### What is the difference between list/set/dictionary comprehension and a generator expression in Python?
 #### Does the order of the function definitions matter in Python? Why?
 
     Order of the functions does not matter because you are just adding 2 new functions for example. But to actually access it you will need to write a look-up. YOu will need to call the function. And in order to have the right order you will need to call them in the main for example in the right order.
 
 #### What does unpacking mean in Python?
 
-    Unpacking in Python refers to an operation that consists of assigning an iterable of values to a tuple (or list) of variables in a single assignment statement. As a complement, the term packing can be used when we collect several values in a single variable using the iterable unpacking operator, *.
+    Unpacking in Python refers to an operation that consists of assigning an iterable of values to a tuple (or list) of variables in a single assignment statement.
+    We can use * to unpack the list so that all elements of it can be passed as different parameters. 
+    
+    def my_func(a, b, c):
+    ...
+
+
+    my_func(*my_list)
 
 #### What happens when you try to assign the result of a function which has no return statement to a variable in Python?
 
-    ValueError will raise as if you dont return a variable from a function then you cant access it outside of the function scope.
+    If there is no return statement, then an implicit return None is added to the end of a function.
+
+#### What is the difference between list/set/dictionary comprehension and a generator expression in Python?
+
+    List/set/dictionary comprehensions create the entire collection at once, while generators can evaluate elements on demand.
+    The yield statement "saves" the state of the function (rather than terminating it as the return statement) and can be used when the generator is called again.
+    Generators are slower but use less memory. (They can also represent infinite streams)
 
 ## Software engineering
 
 ### Debugging -----------------------------------------------------------------------------------------------------------------------------
 
 #### What techniques can you use while debugging a program in Python?
+
+    1. Print and Check
+    The simplest but powerful method is to print some particular variables and check their values are as expected or not.
+
+    2. Assert and Check
+    Wherever the print is used to assist debugging, assert can be used instead.
+
+    3. Using logging Module
+    Python has an important module named logging. Replacing print or assert to logging methods is more professional and powerful way to debug. 
+
 #### What does step over, step into and step out mean while using the debugger?
+
+    Step over – An action to take in the debugger that will step over a given line.
+    Step into – An action to take in the debugger. If the line does not contain a function it behaves the same as “step over” but if it does the debugger will enter the called function and continue line-by-line debugging there.
+    Step out – An action to take in the debugger that returns to the line where the current function was called.
+
 #### How can you start to debug a program from a certain line using the debugger?
 
-    You need to place a breakpoint at the start of the function/part of code you want to debug. You can do that by clicking before line number in vscode.
+    You need to place a breakpoint at the start of the function/part of code you want to debug. You can do that by clicking before line number in vscode. When you use step-into, you can keep jumping between lines until the breakpoint, where the breakpoint will stop the debugging.
 
 ### Version control -----------------------------------------------------------------------------------------------------------------------------
 
@@ -237,7 +278,7 @@
 
 #### What does it mean atomic commits and descriptive commit messages?    
 
-    Atomic commit means you make a commit every time you make changes or finish a feature, making commit after 2 feature chagne doesnt not go as an atomic commit. 
+    Atomic commit means you make a commit every time you make changes or finish a feature, making commit after 2 feature chagne does not go as an atomic commit. 
     Descriptive commit messages mean when you give a commit message you describe shotrly but meaningfully the changes and modifications you made on the feature/programme.
 
 #### What’s the difference between git and GitHub?
@@ -258,6 +299,11 @@
 
 #### What steps do we usually do during a clean code refactoring?
 
+    First we need to try and understand the code.
+    Then we start with checking variable and function names, and replace them if needed.
+    Then we eliminate global variables and magic numbers.
+    In the end, the code should be free of clutter, complexity and cleverness.
+
 ### Error handling
 
 #### What is exception handling?
@@ -270,6 +316,9 @@
     
 #### What are the basics of exception handling in Python?
 
+    In Python, exceptions can be handled using a try statement. The critical operation which can raise an exception is placed inside the try clause. 
+    The code that handles the exceptions is written in the except clause. We can thus choose what operations to perform once we have caught the exception.
+
 #### In which case should we catch an exception? Why?
 
     If the Python program contains suspicious code that may throw the exception, we must place that code in the try block. 
@@ -281,7 +330,7 @@
 
 #### What does the else and finally statement do in a try-except block in Python?
 
-    1 -> We can use the else statement with the try-except statement in which, we can place the code which will be executed in the scenario if no exception occurs in the try block.
+    1 -> We can use the else statement with the try-except statement in which, we can place the code which will be executed if no exception occurs in the try block.
     2 -> Python provides the optional finally statement, which is used with the try statement. It is executed no matter what exception occurs and used to release the external resource. 
     The finally block provides a guarantee of the execution. We can use the finally block with the try block in which we can pace the necessary code, 
     which must be executed before the try statement throws an exception.
@@ -344,3 +393,5 @@
     less: it is command line utility that displays the contents of a file or a command output, one page at a time
 
 #### How do you download a file from internet using the terminal?
+
+    "wget + URL" with a new name "wget -o filename URL"
