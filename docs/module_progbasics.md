@@ -6,7 +6,7 @@
 
 #### What is the purpose of a list (array in some programming languages) data structure? Name some methods of it!
 
-    A list in python is a data  structure that is mutable/changeable,its an ordered sequence of elements.Lists are useful when u want to work with more values , they  let you work with more items at once, allows you to perform methods at once on multiple values, it keeps data together.
+    A list in python is a data structure that is an ordered sequence of elements.Lists are muteable and are useful when u want to work with more values , they let you work with more items at once, allows you to perform methods at once on multiple values, it keeps data together.
     append()	Adds an element at the end of the list
         - clear()	Removes all the elements from the list
         - copy()	Returns a copy of the list
@@ -120,6 +120,7 @@
 
 ### Programming languages - Python
 #### How do you use a dictionary in Python?
+
     my_dict = {'a': 1, 'b': 2, 'c': 3}
     my_dict = dict(a=1, b=2, c=3)
 
@@ -143,7 +144,7 @@
 
 #### What is variable shadowing? (context: variable scope)
 
-    Variable shadowing is when you have a variable declaired in a certain scope such as method or a class, has the same name as a variable declared in the outer/global scope. This is known as name masking at the level of identifiers. The outer scope is shadowed by the variable in the inner scope, and the inner variable is is masking the outer indentifier.
+    Variable shadowing is when you have a variable declaired in a certain scope such as method or a class, has the same name as a variable declared in the outer/global scope. This is known as name masking at the level of identifiers. The outer scope is shadowed by the variable in the inner scope, and the inner variable is masking the outer indentifier.
 
 #### What can happen if you try to delete/drop/add an item from a List, while you are iterating over it in Python?
 
