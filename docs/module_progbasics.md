@@ -200,7 +200,7 @@
 
 #### Does the order of the function definitions matter in Python? Why?
 
-    Order of the functions does not matter because you are just adding 2 new functions for example. But to actually access it you will need to write a look-up. YOu will need to call the function. And in order to have the right order you will need to call them in the main for example in the right order.
+    Order of functions does not matter, as the functions need to be called. What matters is that we declare all functions that interact with each other before we call any of them. 
 
 #### What does unpacking mean in Python?
 
@@ -220,8 +220,7 @@
 #### What is the difference between list/set/dictionary comprehension and a generator expression in Python?
 
     List/set/dictionary comprehensions create the entire collection at once, while generators can evaluate elements on demand.
-    The yield statement "saves" the state of the function (rather than terminating it as the return statement) and can be used when the generator is called again.
-    Generators are slower but use less memory. (They can also represent infinite streams)
+    Generators are slower but use less memory.
 
 ## Software engineering
 
@@ -258,12 +257,13 @@
 
 #### What is the difference between the working directory, the staging area and the repository in git?
 
-    Working directory is your computer where you work at. Your changes are only yours no one can see it.
-    Staging area is the area where you add the code you been working on, its the area where the code is kept if the repository, which is the "cloud" on github, has changes aswell. In this case the code is kept in staging area until you pull the changes and accept them.
+    Working directory: Contains the files that are untracked by Git (still "in the works").
+    Staging area: Contains the files that are added from the working directory. Git keeps track of any change that happens to these files.
+    Local git repository: The .git/ directory inside a project. Contains the files that are pushed from the staging area. This repository tracks all changes made to files in your project, building history over time. If you delete the .git/ folder, you destroy your whole project's history.
 
 #### What are remote repositories in git?
 
-    A remote repository in Git, also called a remote, is a Git repository that's hosted on the Internet or another network.
+    A remote repository in Git, also called a remote, is a Git repository that's hosted on the Internet or another network. It contains all the versions of the project.
 
 #### Why does a merge conflict occur?
 
@@ -272,9 +272,9 @@
 #### Through what series of commands could you put a new file into a remote repository connected to your existing local repository?
 
     git status (to check for rmodifications to make sure)
-    git add -A where -A means all mods
-    git commit -m where -m means a message which should describe the changes
-    git push to push all changes to development branch
+    git add my_file
+    git commit -m "bugfixes"
+    git push origin master
 
 #### What does it mean atomic commits and descriptive commit messages?    
 
