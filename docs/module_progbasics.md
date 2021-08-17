@@ -22,7 +22,7 @@
 #### What is the difference between a list/array and a set?
 
     -all the items in a set is unique, so there cant be duplicates
-    -sets are unordered, meaning they appear in a different order every time you use themx
+    -sets are unordered, meaning they appear in a different order every time you use them
     -sets only contain hashable items, you use hash lookup to find elements in a set
     -sets are unindexed
     -sets are immutable
@@ -133,7 +133,7 @@
 #### What is conditional expression in Python?
 
     Conditional expressions are operators that evaluate something based on a condition being True or False.
-    conditional expressions are if,else,elif
+    conditional expressions for ex. if,else,elif
     for ex: min = a if a < b else b
 
 #### What are different types of arguments in Python?
@@ -210,7 +210,6 @@
     
     def my_func(a, b, c):
     ...
-
 
     my_func(*my_list)
 
@@ -353,7 +352,7 @@
 
 #### What do we call the shell in Linux?
 
-     Bash which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, sh , written by Steve Bourne
+    Bash which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, sh , written by Steve Bourne
 
 #### What does root means in a Linux environment?
 
