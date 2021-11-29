@@ -11,10 +11,11 @@
     A reusable query should do one thing, and do it properly.
     Name objects in your database logically and consistently.
 #### What layers can you name in a simple web application?
-     user interface , application, data
+    user interface , application, data
+
 ### Error handling
 #### What error can occur, when an array does not have an element on the requested index?
-    IndexError: List index out of range
+    IndexError: List index out of range 
 #### What is the “finally” block, and how would you use it?7
     The try statement can have a finally block (it is optional). It executes no matter what, as the last step of the error handling.
 #### Why should we catch special exception types?
@@ -71,7 +72,6 @@
     In queues we maintain two pointer to access the list (first/last position).
 #### What is BubbleSort? Describe the main logic of this sorting algorithm.
 Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
-
 def bubbleSort(arr):
     n = len(arr)
     for i in range(n):
@@ -191,9 +191,7 @@ switch(expression) { case x: code break; default: code }
 
 #### What’s the difference between XML, XHTML and HTML?
     HTML : is the HyperText Markup language, which is designed to create structured documents and provide for semantic meaning behind the documents(the skeleton of the website)
-
     XML : is the Extensible Markup Language which provides rules for storing, creating, structuring and encoding documents
-
     XHTML : is an XML-based HTML. it serves the same function as HTML, but with the same functionas XML documents
 #### How to include a JavaScript file in a webpage?
     <script src={path/to/file.js}></script>
@@ -220,7 +218,6 @@ switch(expression) { case x: code break; default: code }
     User friendly design,
     Good looking easy to overview,
     clear and readable,
-    user friendly
 #### What is XML, XSLT, DTD?
     XML is eXtensible Markup Language used for storing data. XSLT is ((eXtensible Stylesheet Language) Transformation) used for styling XML. DTD is Document Type Definition used for defining the structure and attributes of XML.
 #### What is the difference between HTML and XML?
@@ -290,7 +287,10 @@ merge and check if its fully functional all together, review it with others then
 #### What is TCP/IP? What layers does it define, what are they responsible for?
     TCP/IP (Transmission Control Protocol/Internet Protocol) is a set of protocols, that are used for data transmission over computer networks. It is a set of communication rules that defines how data should be transferred.(packeting, addressing, transferring, routing, receiving) It.contains four layers :1. Process/Application Layer(HTTP, Browser), 2. Host-to-Host/Transport Layer(TCP, it packets the data with headers), 3. Internet Layer(IP, it knows where it comes from and where it goes), 4. Network Access/ Link Layer(receives and converts the data)
 #### What’s the difference between TCP and UDP?
-    -TCP is a connection-roiented protocol, whereares UDP is a connectionless protocol -The speed for TCP is slower while the speed of UDP is faster -TCP uses handshake protocol like SYN, SYN-ACK, ACK while UDP uses no handshake protocols -TCP does error checking and also makes error recovery, on the other hand, UDP performs error checking, but it discards erroneous packets. -TCP has acknowledgement segments, but UDP does not have any acknowledgement segment -TCP is heavy-weight and UDP is lightweight
+    -TCP is a connection-oriented protocol, whereares UDP is a connectionless protocol 
+    -The speed for TCP is slower while the speed of UDP is faster 
+    -TCP uses handshake protocol like SYN, SYN-ACK, ACK while UDP uses no handshake protocols 
+    -TCP does error checking and also makes error recovery, on the other hand, UDP performs error checking, but it discards erroneous packets.
 #### How does an HTTP Request look like? What are the most relevant HTTP header fields?
     "GET /software/htp/cics/index.html HTTP/1.1" HTTP headers let the client and the server pass additional information with an HTTP request or response.
 #### How does an HTTP Response look like? What are the most relevant HTTP header fields?
