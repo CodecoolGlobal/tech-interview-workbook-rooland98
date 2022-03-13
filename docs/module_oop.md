@@ -57,6 +57,7 @@ Garbage collector is a system that can be found in programming languages like Ja
 Casting is when we convert a datatype into another datatype. Upcasting is the typecasting of a child to a parent object. Downcasting is basicaly the same but in the other way.
 
 #### Which order should we catch the exceptions? Why?
+The order is whatever matches first, gets executed. If the first catch matches the exception, it executes, if it doesn't, the next one is tried and on and on until one is matched or none are. So, when catching exceptions you want to always catch the most specific first and then the most generic (as RuntimeException or Exception). It's also a compilation error to catch a generic exception first and then one of it's descendants later ( compilation error: first Exception, next RuntimeException). 
 
 ### Object-oriented
 #### What is a class?
@@ -99,10 +100,26 @@ Access modifiers specifies the accessibility of a field, method, constructor or 
 #### What is data hiding?
 When you use private access modifier on a field for example, so it can only be access via getters and setters, so no unauthorized access will be done on the field.
 
+Encapsulation, in the context of C#, refers to an object's ability to hide data and behavior that are not necessary to its user. Encapsulation enables a group of properties, methods and other members to be considered a single unit or object.
+Encapsulation in C# is implemented with different levels of access to object data that can be specified using the following access modifiers:
+
+    Public: Access to all code in the program
+    Private: Access to only members of the same class
+    Protected: Access to members of same class and its derived classes
+    Internal: Access to current assembly
+    Protected Internal: Access to current assembly and types derived from containing class
+
+C# allows encapsulation of data through the use of accessors (to get data) and mutators (to modify data), which help in manipulating private data indirectly without making it public. Properties are an alternate mechanism for private data to be encapsulated in a C# object and accessed in either read-only mode or in read-write mode. Unlike the accessor and mutator, a property provides a single point of access to an object's "set" and "get" values. 
+
 #### Can a static method use non-static members?
-Static methods can't use non-static members.
+Static methods can't use non-static members.In a static method, the method can access only static data members and static methods of another class or same the class.
 
 #### What is the difference between hiding a static method and overriding an instance method?
+Instance Methods
+An instance method is a method with the same signature and return type as the virtual instance method in the superclass, but it overrides the superclass's method. This ability of a subclass (to override a method) allows a class to inherit from a superclass and modify behaviour as needed. The overriding method has the same name, number and type of parameters, and return type as the method that it overrides. An overriding method can also return a subtype of the type returned by the overridden method. This subtype is called a covariant return type. It is useful as it can be modified in all classes deriving from the superclass.
+
+Static Methods
+The static method uses class memory rather than an object. Static Method is called by class name. We can call a non-static function in static function by making an object of the class. We can’t use this keyword inside the static function. It can be used to define simple behaviour.
 
 #### Define the following terms: Instantiation, Attribute, Method
 Instantiation: When you create an instance of a class 
@@ -112,19 +129,19 @@ Method: A collection of statements, that perform a specific task, and it returns
 #### Could we access a static variable (or method) from a non-static method? Why?
 We can, because a static variable can be accessed from anywhere even without instantiation and so the non-static method can work with it.
 #### Could we access a non-static variable (or method) from a static method? Why?
-????
+You cannot access a non-static variable from a static method without an instance, because they doesn’t exist without their dad (the instance).
 
 #### How many instances you have of a static variable of a given class?
 Only one. Static variables are also known as Class Variables.
 
 #### Why is it not a good practice to write a lot of static methods?
-Static methods remain in the memory for a log time and its garbage collection takes long time. Developer's don't have control on destroying or creating of Static variables. Excessive usage of static variables can result in the memory overflow.
+Static methods remain in the memory for a log time and its garbage collection takes long time. Developer's don't have control over destroying or creating Static variables. Excessive usage of static variables can result in the memory overflow.
 
 #### What are the features of static attributes and static methods of a class? What are the benefits, when to use them?
 The static can be used mainly for memory management reasons. If we don't want to create an object just so we can access a variable or field in it (like the PI variable for e.g.), then this can be a resons to create a static.
 
 #### What is the ‘this’ reference?
-this keyword refers to the current instance of a class
+this keyword refers to the current object
 
 #### What are base class, subclass and superclass?
 Base class is a class, from which other classes are derived. 
@@ -133,8 +150,51 @@ Subclass (or child class) is the class which inherits its constructors, methods,
 
 #### Draw an object oriented family (as entities, with relations) on the whiteboard.
 --picture saved--
+
 #### Difference between overloading and overriding?
+They are very different, the only thing common in them is that they both of them has a connection in a way with the methods. Overloading: When you create more than 1 constructor on a method, and you give different type and number of arguments in it. Overriding: When you "override" the original purpose of the method, and you do something unique with it.
+
 #### What are the Object Oriented Principles? Explain the concepts with realistic examples!
+
+Abstraction: 
+
+It is a process of hiding the implementation details and showing only functionality to the user.
+EX.: We have an object Mobile phone. We have 3 mobile phones as following:
+    Nokia 1400 (Features: Calling, SMS)
+    Nokia 2700 (Features: Calling, SMS, FM Radio, MP3, Camera)
+    Black Berry (Features:Calling, SMS, FM Radio, MP3, Camera, Video Recording, Reading E-mails)
+
+Abstract information (necessary and common information) for the object "Mobile Phone" is that it makes a call to any number and can send SMS.
+
+    abstract class MobilePhone {
+        public void Calling();
+        public void SendSMS();
+    }
+    public class Nokia1400: MobilePhone {}
+    public class Nokia2700: MobilePhone {
+        public void FMRadio();
+        public void MP3();
+        public void Camera();
+    }
+    public class BlackBerry: MobilePhone {
+        public void FMRadio();
+        public void MP3();
+        public void Camera();
+        public void Recording();
+        public void ReadAndSendEmails();
+    }
+Encapsulation:
+
+Wrapping up a data member and a method together into a single unit (in other words class) is called Encapsulation.
+Encapsulation in C# is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit. In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class. Therefore, it is also known as data hiding. To achieve encapsulation in C#: Declare the variables of a class as private. Provide public setter and getter methods to modify and view the variables values. The main difference between data hiding and encapsulation is that data hiding focus more on data security and encapsulation focuses more on hiding the complexity of the system.
+
+Inheritance:
+Inheritance is a mechanism in which one object acquires all the states and behaviors of a parent object.
+
+Polymorphism: 
+Polymorphism is the ability of an object to take on many forms. Polymorphism in OOP occurs when a super class references a sub class object.
+Mobile phone but in many forms : phone,camera,mp3player,radio
+
 #### What is method overloading?
 Method overloading allows programmers to use multiple methods with the same name. 
 The methods are differentiated with their number and type of method arguments. 
@@ -160,8 +220,17 @@ In other words, we can say that each module or class should have only one respon
 We need to design the software in such a way that everything in a class or module should be related to a single responsibility.
 
 #### What is an object oriented program? Explain, show.
+Classes and objects are the two main aspects of object-oriented programming. Class – Fruit, Objects – Apple, Orange, Mango So, a class is a template for objects, and an object is an instance of a class. When the individual objects are created, they inherit all the variables and methods from the class. Encapsulation is a process of wrapping code and data together into a single unit. Inheritance is a mechanism in which one object acquires all the states and behaviors of a parent object. Abstraction is a process of hiding the implementation details and showing only functionality to the user. Polymorphism is the ability of an object to take on many forms. Polymorphism in OOP occurs when a super class references a sub class object.
 #### How do you make a class immutable? What do you need to watch out for?
+Immutable objects are objects which once loaded cannot be changed / modified by any way external or internal.
+If I put it in one line, Immutable objects are used for data WHICH IS STATIC. Below are some of the instances of the same.
+
+    Master data: One of the biggest uses of immutable objects is to load master data. Master data like country, currency, region, etc. rarely change. So we would like to load master data once in the memory and then we do not want it to be modified.
+    Configuration data: All application needs configuration data. In the Microsoft world, we normally store these configuration data into Web.config or App.config file. Such kind of data is represented by objects and these data once loaded in the application memory will not change. It's again a good practice to make these kind of configuration data objects as immutable.
+    Singleton objects: In applications, we normally create singleton objects for shared static data. So if the shared data is not changing, it’s an awesome candidate for immutable objects.
+
 #### How many instances can be created for an abstract class?
+YOu cant make instances from abstract classes.
 
 ## Programming languages
 
@@ -211,24 +280,155 @@ We need to design the software in such a way that everything in a class or modul
 
 ### C#;
 #### Explain the purpose of IL and how does it relate to CLR?
+IL(Intermediate language) code is a CPU independent partially compiled code. It’s partially compiled because we do not know in what kind of environment .NET code will run and on runtime IL Code will compile to machine code using the environmental properties(CPU, OS, machine configuration, etc). JIT compiles the IL code to Machine code just before execution and then saves this transaction in memory.
+CLR(Common language runtime) is the heart of the .NET framework and it does 4 primary important things:
+
+    1.Garbage collection
+    2.CAS (Code Access Security)
+    3.CV (Code Verification)
+    4.IL to Native translation
+
 #### What does “managed code” mean?
+A code whose execution is managed by a runtim(CLR).
+CLR is in charge of taking the managed code, compiling it into machine code and then executing it. On top of that, runtime provides several important services such as automatic memory management, security boundaries, type safety etc.
+
 #### What is an assembly?
+An assembly is a collection of types and resources that are built to work together and form a logical unit of functionality.Assemblies provide the common language runtime with the information it needs to be aware of type implementations.
+In .NET and .NET Framework, you can build an assembly from one or more source code files. In .NET Framework, assemblies can contain one or more modules. This allows larger projects to be planned so that several developers can work on separate source code files or modules, which are combined to create a single assembly.
+
 #### What is the difference between an EXE and a DLL?
+-EXE: executable
+-DLL: dynamic link library
+
 #### What is the difference between `dotnet build` and `dotnet restore`?
+dotnet build - Builds a project and all of its dependencies.
+dotnet restore - Restores the dependencies and tools of a project.
+
+DEpendencies of a project is created in a json format when dotnet restore is executed , but you dont have to run dotnet restore implicitly because every command which builds and requires the restore to run will run it automatically.
+
 #### What is strong-typing versus weak-typing? Which is preferred? Why?
+C# is a strongly typed language.
+Strong typing means that the type check is done at compile time and weak typing means that the type check is done at run time. .NET languages incorporate strong typing.
+
 #### What is a namespace?
+The namespace keyword is used to declare a scope that contains a set of related objects. You can use a namespace to organize code elements and to create globally unique types.
+
 #### Explain sealed class in C#?
+A sealed class, in C#, is a class that cannot be inherited by any class but can be instantiated.
+The design intent of a sealed class is to indicate that the class is specialized and there is no need to extend it to provide any additional functionality through inheritance to override its behavior. A sealed class is often used to encapsulate a logic that needs to be used across the program but without any alteration to it. 
+
 #### What is explicit vs. implicit conversion? Give examples of both of them.
+Implicit conversion is the simplest type of conversion. This type of conversion is type-safe and no loss of data happens during conversion. These conversions deal in converting a derived class to base class.
+Implicit conversion can be used directly if the value that needs to be stored in another variable can fit directly without data loss. Like int -> long
+
+int i = 75;
+long j = i;
+
+If there is a chance of data loss then the compiler will require performing an explicit conversion.
+Explicit conversion or cast is a process of passing information to the compiler that the program is trying to perform conversion with the knowledge of possible data loss.
+IF we are converting a higher numeric value into a lower one:
+double d = 75.26;
+int i;
+i = (int)d;
+
+The numbers after the decimal will be lost in the conversion.
+
 #### Is a struct stored on the heap or stack?
+Structs are not stored anywhere, local variables and fields are.
+Local variables are stored on stack no matter what type (class or struct) they have. The difference is that a local variable of struct type stores the struct instance and a local variable of reference types stores a reference to the class instance that's stored on the heap.
+Fields are stored in the object they belong too. If the object is of reference type then it's stored on the heap and so are its fields. If the object is of struct type then it may be stored on stack (as a local variable) or on the heap (as a field of another object).
+
 #### Can a struct have methods?
+In C#, a structure is a value type data type. It helps you to make a single variable hold related data of various data types. The struct keyword is used for creating a structure.
+Structures can have methods, fields, indexers, properties, operator methods, and events.
+Structures can have defined constructors, but not destructors. However, you cannot define a default constructor for a structure. The default constructor is automatically defined and cannot be changed.
+Unlike classes, structures cannot inherit other structures or classes.
+Structures cannot be used as a base for other structures or classes.
+A structure can implement one or more interfaces.
+Structure members cannot be specified as abstract, virtual, or protected.
+
 #### Can DateTimes be null?
+DateTime? myDate = null;
+The question mark will give you a nullable type. The one that can either be set to its native value or to null.
+DateTime itself is a value type. It cannot be null.
+
 #### List out the differences between Array and ArrayList in C#?
+Array:
+Array is strongly typed, it can only store a specific type of items/elements.
+Array we store only one type ot data.
+Array cant accept null
+Array belong to System.Array namespace 
+using System;
+
+ArrayList:
+ArrayLsit can store multiple type of items/elements.
+Arraylist can store all the datatype values.
+ArrayList collection accepts null.
+Arraylist belongs to System.Collections namespace 
+using System.collections;
+
 #### How is the using() pattern useful? What is IDisposable? How does it support deterministic finalization?
+The using statement defines a scope at the end of which an
+object will be disposed. You create an instance in a using statement to ensure that
+Dispose is called on the object when the using statement is
+exited.The object you instantiate must implement the
+System.IDisposable interface.
+
+using (expression | type identifier = initializer) statement
+where: 
+
+expression
+An expression you want to call Dispose on upon exiting the
+using statement.
+
+type
+The type of identifier.
+
+identifier
+The name, or identifier, of the type type. It is possible
+to define more than one identifier of type type. Precede
+each identifier = initializer with a comma.
+
+initializer
+An expression that creates an object.
+
+statement
+The embedded statement or statements to executed. 
+
 #### How can you make sure that objects using dedicated resources (database connection, files, hardware, OS handle, etc.) are released as early as possible?
+Implement the dispose pattern. This requires that you provide an IDisposable.Dispose implementation to enable the deterministic release of unmanaged resources. A consumer of your type calls Dispose when the object (and the resources it uses) are no longer needed. The Dispose method immediately releases the unmanaged resources.
+
 #### Why to use keyword “const” in C#? Give an example.
+The const (read: constant) keyword in C# is used to define a constant variable, i.e., a variable whose value will not change during the lifetime of the program. const int Pi = 3.14;
+
 #### What is the difference between “const” and “readonly” variables in C#?
+Readonly:
+- Readonly is a runtime constant
+- The value of readonly field can be changed
+- It cannot be declared inside the method
+- In readonly fields we can assign values in declaration and in the constructor
+- It can be used with static modifiers.
+
+Const:
+- Const is a simple compile time constants
+- The value of the field can not be changed
+- It can be declared inside the method
+- In const fields, we can only assign values in declaration part
+- IT cannot be used with static modifiers
+
 #### What is a property in C#?
+Property in C# is a member of a class that provides a flexible mechanism for classes to expose private fields. 
+C# properties are special methods called accessors. A C# property have two accessors, get property accessor and set property accessor.
+A get accessor returns a property value, and a set accessor assigns a new value. The value keyword represents the value of a property.
 #### List out two different types of errors in C#?
+There are mainly five types of errors exist in C programming:
+
+    Syntax error.
+    Run-time error.
+    Linker error.
+    Logical error.
+    Semantic error
+    
 #### What is the difference between “out” and “ref” parameters in C#?
 #### Can we override private virtual method in C#?
 #### What's the difference between IEquatable and just overriding Object.Equals()?
