@@ -420,6 +420,7 @@ Const:
 Property in C# is a member of a class that provides a flexible mechanism for classes to expose private fields. 
 C# properties are special methods called accessors. A C# property have two accessors, get property accessor and set property accessor.
 A get accessor returns a property value, and a set accessor assigns a new value. The value keyword represents the value of a property.
+
 #### List out two different types of errors in C#?
 There are mainly five types of errors exist in C programming:
 
@@ -430,29 +431,153 @@ There are mainly five types of errors exist in C programming:
     Semantic error
     
 #### What is the difference between “out” and “ref” parameters in C#?
+The out is a keyword in C# which is used for passing the arguments to methods as a reference type. It is generally used when a method returns multiple values. The out parameter does not pass the property.
+
+The ref is a keyword in C# which is used for passing the arguments by a reference. We can say that if any changes made in the argument the method will reflect it in that variable when the control return to the calling method. The ref parameter does not pass the property.
+
+ref:
+It is necessary the parameters should initialize before it pass to ref.
+The passing of value through ref parameter is useful when the called method also need to change the value of passed parameter.
+It is not necessary to initialize the value of a parameter before returning to the calling method.
+When ref keyword is used the data may pass in bi-directional.
+
+out:
+It is not necessary to initialize parameters before it pass to out.
+The declaring of parameter through out parameter is useful when a method return multiple values.
+It is necessary to initialize the value of a parameter before returning to the calling method.
+When out keyword is used the data only passed in unidirectional.
+
 #### Can we override private virtual method in C#?
+First of all private methods in the inherited class can't be accessed, so there is no question of overriding of private virtual methods. They have to be protected instead of private to be accessed in derived classes.
 #### What's the difference between IEquatable and just overriding Object.Equals()?
 #### Explain the differences between public, protected, private and internal. Explain access modifier – “protected internal” in C#!
+    Public: Access to all code in the program
+    Private: Access to only members of the same class
+    Protected: Access to members of same class and its derived classes
+    Internal: Access to current assembly
+    Protected Internal: Access to current assembly and types derived from containing class
+
 #### What’s the difference between using `override` and `new` keywords when defining method in child class?
+The override modifier extends the base class virtual method, and the new modifier hides an accessible base class method.
+
 #### Explain StringBuilder class in C#!
+In C#, the string type is immutable. It means a string cannot be changed once created. For example, a new string, "Hello World!" will occupy a memory space on the heap. Now, by changing the initial string "Hello World!" to "Hello World! from Tutorials Teacher" will create a new string object on the memory heap instead of modifying an original string at the same memory address. This behavior would hinder the performance if the original string changed multiple times by replacing, appending, removing, or inserting new strings in the original string. To solve this problem, C# introduced the StringBuilder in the System.Text namespace. The StringBuilder doesn't create a new object in the memory but dynamically expands memory to accommodate the modified string. The StringBuilder is not the string. Use the ToString() method to retrieve a string from the StringBuilder object.
+
 #### How we can sort the array elements in descending order in C#?
+Array.Sort() then Array.Reverse();
+OR 
+
+        int[] arr = new int[] {1, 9, 6, 7, 5, 9};
+        int temp;
+  
+        // traverse 0 to array length
+        for (int i = 0; i < arr.Length - 1; i++)
+  
+            // traverse i+1 to array length
+            for (int j = i + 1; j < arr.Length; j++)
+            {
+                // compare array element with 
+                // all next element
+                if (arr[i] < arr[j]) {
+  
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+OR
+arr.OrderByDescending(c => c).ToArray();
+
 #### Can you use a value type as a generic type argument in C#? For example when implementing an interface like (IEquatable).
-#### What are Nullable Types in C#?
+#### What are Nullable Types in C#? 
+The Nullable type allows you to assign a null value to a variable. Nullable types introduced in C#2.0 can only work with Value Type, not with Reference Type. The nullable types for Reference Type is introduced later in C# 8.0 in 2019 so that we can explicitly define if a reference type can or can not hold a null value.
+The Nullable type is an instance of System.Nullable<T> struct.
+
 #### Conceptually, what is the difference between early-binding and late-binding?
+The Early Binding occurs at compile time while the Late Binding occurs at runtime. The key difference between Early and Late Binding is that Early Binding uses the class information to resolve method calling while Late Binding uses the object to resolve method calling
+
 #### What is delegate, event, callback, multicast delegate?
+Delegate is a pointer to a function and you can invoke the pointed function via the delegate.
+Events and Multicast are types of delegates. So delegate is the base for events and multicast.
+Multicast delegates help to invoke multiple callbacks.
+
+delegate void SomeMethod();
+SomeMethodPtr ptrDelegate = SomeMethod;
+ptrDelegate.Invoke();
 #### What is enum in C#?
+An enumeration type (or enum type) is a value type defined by a set of named constants of the underlying integral numeric type.
+
 #### What is null-conditional operator?
+A null-conditional operator applies a member access, ?., or element access, ?[], operation to its operand only if that operand evaluates to non-null; otherwise, it returns null.
+    If a evaluates to null, the result of a?.x or a?[x] is null.
+    If a evaluates to non-null, the result of a?.x or a?[x] is the same as the result of a.x or a[x], respectively.
 #### What is null-coalescing operator?
+The null-coalescing operator ?? returns the value of its left-hand operand if it isn't null; otherwise, it evaluates the right-hand operand and returns its result. The ?? operator doesn't evaluate its right-hand operand if the left-hand operand evaluates to non-null.
 #### What is serialization?
+Serialization is the process of converting an object into a stream of bytes to store the object or transmit it to memory, a database, or a file. Its main purpose is to save the state of an object in order to be able to recreate it when needed. The reverse process is called deserialization.
 #### What is the difference between Finalize() and Dispose() methods?
+Finalize is the backstop method, called by the garbage collector when it reclaims an object. Dispose is the "deterministic cleanup" method, called by applications to release valuable native resources 
 #### How do you inherit a class from another class in C#?
+class Dog : Animal{
+
+}
+in this case i mark that the dog is the child or subclass of Animal superclass/parent class
 #### What is difference between “is” and “as” operators in C#?
+The is operator will check if the result of the expression is compatible with a given type by simply testing an expression against a pattern.
+The as operator is used to perform conversions between compatible types. It has a very similar role to the is operator, however, it works differently under the hood.
+
+The is operator is used to check if the run-time type of an object is compatible with the given type or not, whereas the as operator is used to perform conversion between compatible reference types or nullable types.
+The is operator is of Boolean type, whereas the as operator is not.
+The is operator returns true if the given object is of the same type, whereas the as operator returns the object when they are compatible with the given type.
+The is operator returns false if the given object is not of the same type, whereas the as operator returns null if the conversion is not possible.
+The is operator is used for only reference, boxing, and unboxing conversions, whereas the as operator is used only for nullable, reference, and boxing conversions.
+
 #### What are indexers in C# .NET?
+Indexers allow instances of a class or struct to be indexed just like arrays. The indexed value can be set or retrieved without explicitly specifying a type or instance member. Indexers resemble properties except that their accessors take parameters.
+
 #### What is the difference between returning IQueryable<T> vs. IEnumerable<T>?
+The main difference between “IEnumerable” and “IQueryable” is about where the filter logic is executed. One executes on the client side (in memory) and the other executes on the database.
+
 #### What is LINQ? Explain the idea of extension methods.
+LINQ (Language Integrated Query) is uniform query syntax in C# to retrieve data from different sources and formats. It is integrated in C#, thereby eliminating the mismatch between programming languages and databases, as well as providing a single querying interface for different types of data sources. In C#, the extension method concept allows you to add new methods in the existing class or in the structure without modifying the source code of the original type and you do not require any kind of special permission from the original type and there is no need to re-compile the original type.
+
 #### What are the advantages and disadvantages of lazy loading?
+When you request a website, your browser loads all the required resources to display the page as desired. This means that all objects are requested, even those that are not visible to the user (i.e. objects that are “below the fold”). This results in unnecessarily long load times. To get around this issue, developers use lazy loading. Using a script such as LazyLoad, the browser only loads images and other data when they are in the viewport (i.e. the visible area), such as when scrolling or enlarging the browser window.
+
+advantages:
+Improved performance, less traffic load for the host
+disadvantages:
+UX may be affected, additional code when integrating with JS, External libraries may be required, JS integration requires that users have scripts enabled
+
 #### How to use of “yield” keyword? Mention at least one practical scenario where it can be used?
+When you use the yield contextual keyword in a statement, you indicate that the method, operator, or get accessor in which it appears is an iterator. Using yield to define an iterator removes the need for an explicit extra class.
+
+IEnumerable<object> FilteredList()
+{
+    foreach(object item in FullList)
+    {
+        if(IsItemInPartialList(item))
+            yield return item;
+    }
+}
+The function returns an object that implements the IEnumerable<object> interface. If a calling function starts foreaching over this object, the function is called again until it "yields".
+
 #### What are attributes in C#? Give some examples of usage of them.
+Attributes provide a powerful method of associating metadata, or declarative information, with code (assemblies, types, methods, properties, and so forth). 
+For ex. In ASP.Net MVC we mark the Routes for each action in controllers such as [Route("Home/Index")]
+
 #### By what mechanism does NUnit know what methods to test?
+Arrange/Act/Assert
+The classic method of arranging our NUnit test code conforms to the “Arrange/Act/Assert” pattern. Using this pattern, we setup our code so that it is in the state we need it to be to perform the test. Then we perform some distinct action on the code. This action should exercise one and only one feature. And then, finally we assert that the action we performed resulted in some expectation being fulfilled.
+
 #### What is the GAC? What problem does it solve?
+Global Assembly Cache (GAC):
+
+- Any system that has the CLR (common language runtime) installed, has a machine-wide code cache known as GAC.
+- Assemblies deployed in the global assembly cache need to have a strong name.
+- The Global Assembly Cache tool (Gacutil.exe), provided by the .NET Framework SDK can be used to deploy assemblies to GAC.
+
+GAC solves the problem of DLL Hell and DLL versioning. GAC can hold two assemblies of the same name but different version. This ensures that the applications which access particular assembly can continue to access the same assembly even if another version of that assembly is installed on that machine.
+
 #### What is the largest number you can work with in C#?
+Max integer range is, on just about every (modern) platform, 2^31 - 1 (although, by the standard, int is only required to be at least 16 bits). For your given platform, it'll be defined as INT_MAX in <limits.
