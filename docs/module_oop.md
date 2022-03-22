@@ -37,11 +37,20 @@ If the list comes to an end, it doesn't have a loop.
 The Big O Notation for time complexity gives a rough idea of how long it will take an algorithm to execute based on two things: the size of the input it has and the amount of steps it takes to complete. We compare the two to get our runtime. Time complexity measures how efficient an algorithm is when it has an extremely large dataset. We look at the absolute worst-case scenario and call this our Big O Notation. 
 
 #### How does HashMap work?
-#### Why is it important for keys in a map to have an immutable type? (Consider String for example.)
+In C#, Dictionary is a generic collection which is generally used to store key/value pairs. The working of Dictionary is quite similar to the non-generic hashtable. The advantage of Dictionary is, it is generic type. Dictionary is defined under System.Collection.Generic namespace. It is dynamic in nature means the size of the dictionary is grows according to the need.
+
+Important Points:
+    - In Dictionary, the key cannot be null, but value can be.
+    - In Dictionary, key must be unique. Duplicate keys are not allowed if you try to use duplicate key then compiler will throw an exception.
+    - In Dictionary, you can only store same types of elements.
+    - The capacity of a Dictionary is the number of elements that Dictionary can hold.
 
 ### Database
 
 #### How can you connect your application to a database server? What are the possible ways?
+Storing a database access key as a string in the application config named as connectionString, whenever i want to make a query or send request to the database, i need to pass the connectionString to the class which handles the query. You could use REST, and await response. Behind the backend we can create a connection to the server,
+get data by executing an sql command and recieve(or not) a return value, and close the connection.We need to close the connection always!
+
 #### What do you know about database normalization?
 Database normalization is the process of structuring a database, usually a relational database, in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity.
 Normalization entails organizing the columns (attributes) and tables (relations) of a database to ensure that their dependencies are properly enforced by database integrity constraints. It is accomplished by applying some formal rules either by a process of synthesis (creating a new database design) or decomposition (improving an existing database design). 
@@ -128,6 +137,7 @@ Method: A collection of statements, that perform a specific task, and it returns
 
 #### Could we access a static variable (or method) from a non-static method? Why?
 We can, because a static variable can be accessed from anywhere even without instantiation and so the non-static method can work with it.
+
 #### Could we access a non-static variable (or method) from a static method? Why?
 You cannot access a non-static variable from a static method without an instance, because they doesn’t exist without their dad (the instance).
 
@@ -135,7 +145,7 @@ You cannot access a non-static variable from a static method without an instance
 Only one. Static variables are also known as Class Variables.
 
 #### Why is it not a good practice to write a lot of static methods?
-Static methods remain in the memory for a log time and its garbage collection takes long time. Developer's don't have control over destroying or creating Static variables. Excessive usage of static variables can result in the memory overflow.
+Static methods remain in the memory for a long time and its garbage collection takes long time. Developer's don't have control over destroying or creating Static variables. Excessive usage of static variables can result in the memory overflow.
 
 #### What are the features of static attributes and static methods of a class? What are the benefits, when to use them?
 The static can be used mainly for memory management reasons. If we don't want to create an object just so we can access a variable or field in it (like the PI variable for e.g.), then this can be a resons to create a static.
@@ -448,7 +458,8 @@ It is necessary to initialize the value of a parameter before returning to the c
 When out keyword is used the data only passed in unidirectional.
 
 #### Can we override private virtual method in C#?
-First of all private methods in the inherited class can't be accessed, so there is no question of overriding of private virtual methods. They have to be protected instead of private to be accessed in derived classes.
+First of all private methods in the derived class can't be accessed, so there is no question of overriding of private virtual methods. They have to be protected instead of private to be accessed in derived classes.
+
 #### What's the difference between IEquatable and just overriding Object.Equals()?
 #### Explain the differences between public, protected, private and internal. Explain access modifier – “protected internal” in C#!
     Public: Access to all code in the program
