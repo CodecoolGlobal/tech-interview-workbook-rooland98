@@ -24,6 +24,19 @@ pseudo element selector:
 # What are the primitive data types in Javascript?  What makes them primitive?
 Primitive data types are int bigint string null undefined symbol bool. Primitive data types are not objects, they dont have methods or properties.
 
+# Webpack 
+Webpack is a free and open-source module bundler for JavaScript. It is made primarily for JavaScript, but it can transform front-end assets such as HTML, CSS, and images if the corresponding loaders are included. Webpack takes modules with dependencies and generates static assets representing those modules.
+
+# Arrow vs regular functions
+
+- Cleaner syntax with less code written
+- argument binding , in arrow functions do not have arguments binding. However they have access to the closes non arrow parent function argument object.
+Named and rest parameters are heavily relied upon to capture the arguments passed to arrow functions.
+- this keyword : Unlike regular functions, arrow functions do not have their own this. The value of this inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of this in the closest non-arrow parent function. Arrow functions do not have this binding.
+- new keyword : Regular functions created using function declarations or expressions are constructible and callable. Since regular functions are constructible, they can be called using the new keyword.
+However, the arrow functions are only callable and not constructible, i.e arrow functions can never be used as constructor functions. Hence, they can never be invoked with the new keyword.
+- parameters : Arrow functions can never have duplicate named parameters, whether in strict or non-strict mode.
+
 # What does the `&&` `||` `!` and `!!` operators do?
 
 true && true -> true true && false -> false
@@ -52,6 +65,8 @@ Variable scoping in JS is the context of code where the variable is declared and
 if(!variable){
     if the variable is false it will evaluate true
 }
+#### What kind of HTTP status codes do you know?
+    1xx: Informational response, 2xx: Success, 3xx: Redirection, 4xx: Client error, 5xx: Server error
 
 # What does "use strict" do?
 
@@ -364,7 +379,7 @@ Pseudo-elements provide special effects to some selectors. CSS finds use in appl
 Logical tags mainly focus on content and are older as compared to physical ones. Logical ones do not find much usage in presentation and terms of aesthetics. At the same time, physical ones find application in presentation. 
 
 # How media types in CSS work?
-The four types of media properties are print, speech, and screen. Example of using print-media type: 
+The three types of media properties are print, speech, and screen. Example of using print-media type: 
 
 @media print {
 
@@ -384,3 +399,63 @@ The four-position states in CSS are relative, static, absolute, and fixed. The d
 
 # Differentiate between absolute and relative in CSS. 
 The main difference is that relative is used for the same tag in CSS. If we write right:20 px, then padding shifts 20 px in the right. Whereas absolute is relative to the non-static parent, i.e., if we write right:20 px, the result will be 20 px far from the right edge of the parent element.  
+
+# What is CSS reset?
+A CSS Reset is a chunk of CSS code which defines baseline styles for some (or all) HTML elements. There are a plethora of CSS Reset stylesheets out there, and it's easy to write your own. Different browsers use varied default style settings, and these differences can screw up your layout! Resetting these styles to one base evens out the differences, meaning fewer cross-browser issues when designing a website.
+And in the end, there is little to lose. A very basic CSS Reset takes up little space and can be easily over-written if it presents any problems.
+
+# Flexbox
+Before the Flexbox Layout module, there were four layout modes:
+
+Block, for sections in a webpage
+Inline, for text
+Table, for two-dimensional table data
+Positioned, for explicit position of an element
+
+The Flexible Box Layout Module, makes it easier to design flexible responsive layout structure without using float or positioning.
+
+# What is JSX?
+
+JSX stands for JavaScript XML.
+JSX allows us to write HTML in React and makes it easier to write and add HTML in React. JSX allows us to write HTML elements in JavaScript and place them in the DOM without any createElement()  and/or appendChild() methods.
+JSX is an abstraction on top of the React.createElement() API. One reason it is vital to the library—and why the React team chose to go with it in the first place—is that the API would be too cumbersome to use in terms of scaling. One potentially could use React.createElement() to build out an entire application, however this wouldn’t be any more efficient than just using HTML proper. It may feel at first that we’ve taken a step backward by adding our Markup into our template logic, however a few quick minutes with JSX and you’ll be hooked on the style.
+
+# Expressions in JSX
+
+With JSX you can write expressions inside curly braces { }.
+The expression can be a React variable, or property, or any other valid JavaScript expression.
+
+# React Components
+
+Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML.
+Components come in two types, Class components and Function components.
+
+A class component must include the extends React.Component statement. This statement creates an inheritance to React.Component, and gives your component access to React.Component's functions.
+The component also requires a render() method, this method returns HTML.
+
+A Function component also returns HTML, and behaves much the same way as a Class component, but Function components can be written using much less code, are easier to understand.
+
+# React component properties
+
+Components can be passed as props, which stands for properties.
+Props are like function arguments, and you send them into the component as attributes.
+
+# Class construstors 
+
+If there is a constructor() function in your component, this function will be called when the component gets initiated.The constructor function is where you initiate the component's properties.In React, component properties should be kept in an object called state. The constructor function is also where you honor the inheritance of the parent component by including the super() statement, which executes the parent component's constructor function, and your component has access to all the functions of the parent component 
+
+# React keys 
+Keys allow React to keep track of elements. This way, if an item is updated or removed, only that item will be re-rendered instead of the entire list.
+Keys need to be unique to each sibling. But they can be duplicated globally.
+
+# REact router 
+
+Create React App doesn't include page routing.
+React Router is the most popular solution.
+
+We wrap our content first with <BrowserRouter>.
+Then we define our <Routes>. An application can have multiple <Routes>.
+<Route>s can be nested. The first <Route> has a path of "/" and renders the Layout component.
+The nested <Route>s inherit and add to the parent route.
+The Home component route does not have a path but has an index attribute. That specifies this route as the default route for the parent route, which is /.
+Setting the path to * will act as a catch-all for any undefined URLs. This is great for a 404 error page.

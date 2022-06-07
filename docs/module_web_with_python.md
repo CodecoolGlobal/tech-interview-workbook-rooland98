@@ -53,6 +53,7 @@
 
     4. Twofish
     Twofish is a license-free encryption method that ciphers data blocks of 128 bits. It’s considered the successor to the 64-bit Blowfish encryption method and more versatile than its specialized successor, Threefish. Twofish always encrypts data in 16 rounds regardless of the key size. Though it works slower than AES, the Twofish encryption method continues to be used by some file and folder encryption software solutions.
+
 #### What hashing methods do you know?
     MD5 (already broken,easy to manipulate),
     SHA-2(Secure Hash Algorithm)
@@ -274,35 +275,54 @@ merge and check if its fully functional all together, review it with others then
 #### What is a API?
     API stands for application programming interface, it is a software intermediary that allows two applications to talk to each other
 #### What is REST API?
-    REST API stands for Representational State Transfer Application Programming Interface. REST determines how the API looks like. It is a set of rules that developers follow when they create their API. One of these rules states that you should be able to get a piece of data (called resource) when you link to a specific URL
-    
-    REST API adjust to the rules of the REST (Representational State Transfer). Examples
-        Use GET method when you want to get data
-        Use POST method if you create data
-        Use PUT method if you modify data
-        Use DELETE method if you delete data
+    In order for an API to be considered RESTful, it has to conform to these criteria:
+
+    A client-server architecture made up of clients, servers, and resources, with requests managed through HTTP.
+    Stateless client-server communication, meaning no client information is stored between get requests and each request is separate and unconnected.
+    Cacheable data that streamlines client-server interactions.
+    A uniform interface between components so that information is transferred in a standard form. This requires that:
+    resources requested are identifiable and separate from the representations sent to the client.
+    resources can be manipulated by the client via the representation they receive because the representation contains enough information to do so.
+    self-descriptive messages returned to the client have enough information to describe how the client should process it.
+    hypertext/hypermedia is available, meaning that after accessing a resource the client should be able to use hyperlinks to find all other currently available actions they can take.
+    A layered system that organizes each type of server (those responsible for security, load-balancing, etc.) involved the retrieval of requested information into hierarchies, invisible to the client.
+    Code-on-demand (optional): the ability to send executable code from the server to the client when requested, extending client functionality. 
+    Though the REST API has these criteria to conform to, it is still considered easier to use than a prescribed protocol like SOAP (Simple Object Access Protocol), which has specific requirements like XML messaging, and built-in security and transaction compliance that make it slower and heavier. 
 
 #### What is JSON? When to use?
-     JSON stands for JavaScript Object Notation.It is a lightweight format for storing and transporting data. It is used when date is sent from a server to a webpage or reverse.
+     JSON stands for JavaScript Object Notation.It is a lightweight format for storing and transporting data. It is used when data is sent from a server to a webpage or reverse.
 #### What is TCP/IP? What layers does it define, what are they responsible for?
-    TCP/IP (Transmission Control Protocol/Internet Protocol) is a set of protocols, that are used for data transmission over computer networks. It is a set of communication rules that defines how data should be transferred.(packeting, addressing, transferring, routing, receiving) It.contains four layers :1. Process/Application Layer(HTTP, Browser), 2. Host-to-Host/Transport Layer(TCP, it packets the data with headers), 3. Internet Layer(IP, it knows where it comes from and where it goes), 4. Network Access/ Link Layer(receives and converts the data)
+    TCP/IP (Transmission Control Protocol/Internet Protocol) is a set of protocols, that are used for data transmission over computer networks. It is a set of communication rules that defines how data should be transferred.
+    It.contains four layers :
+    1. Process/Application Layer(HTTP, Browser), 
+    2. Host-to-Host/Transport Layer(TCP, it packets the data with headers), 
+    3. Internet Layer(IP, it knows where it comes from and where it goes), 
+    4. Network Access/Link Layer(receives and converts the data)
+
 #### What’s the difference between TCP and UDP?
     -TCP is a connection-oriented protocol, whereares UDP is a connectionless protocol 
     -The speed for TCP is slower while the speed of UDP is faster 
     -TCP uses handshake protocol like SYN, SYN-ACK, ACK while UDP uses no handshake protocols 
     -TCP does error checking and also makes error recovery, on the other hand, UDP performs error checking, but it discards erroneous packets.
+
 #### How does an HTTP Request look like? What are the most relevant HTTP header fields?
     "GET /software/htp/cics/index.html HTTP/1.1" HTTP headers let the client and the server pass additional information with an HTTP request or response.
+
 #### How does an HTTP Response look like? What are the most relevant HTTP header fields?
     Request URL: https://developer.mozilla.org/favicon-48x48.97046865.png Request Method: GET Status Code: 200 Remote Address: 13.32.12.71:443 Referrer Policy: strict-origin-when-cross-origin
+
 #### What is DNS? How does it work?
     The Domain Name System (DNS) is the phonebook of the Internet. Humans access information online through domain names, like nytimes.com or espn.com. Web browsers interact through Internet Protocol (IP) addresses. DNS translates domain names to IP addresses so browsers can load Internet resources
+
 #### What is a web server?
     A web server is used for hosting websites. It usually runs on a dedicated hardware which stores data about the web page. This can handle incoming requests and respond to them.
+
 #### Explain the client-server architecture.
     In this architecture a server can handle many connecting clients over a network. The server contains the data about the page. They communicate through requests and responses. A request is made by the client, the server processes that request (eg: Which page is to be loaded? Which cookies did you send?) and then it sends a response.
+
 #### What would you use a session for?
     I'd store login data with this. Is the user logged in or not.
+    
 #### What would you use a cookie for?
     Personalised ads. Other: Saving forms, saving the state of the basket (any useful information that is not sensitive).
 
