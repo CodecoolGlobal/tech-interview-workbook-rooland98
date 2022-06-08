@@ -24,6 +24,9 @@ pseudo element selector:
 # What are the primitive data types in Javascript?  What makes them primitive?
 Primitive data types are int bigint string null undefined symbol bool. Primitive data types are not objects, they dont have methods or properties.
 
+# What is the difference between null and undefined ? 
+Null is an object with an intentional absence of value while undefined is a data type, where the variable was not declared or defined.
+
 # Webpack 
 Webpack is a free and open-source module bundler for JavaScript. It is made primarily for JavaScript, but it can transform front-end assets such as HTML, CSS, and images if the corresponding loaders are included. Webpack takes modules with dependencies and generates static assets representing those modules.
 
@@ -167,7 +170,6 @@ Create a single object, using an object literal. const person = {firstName:"John
 Create a single object, with the keyword new. const person = new Object();
 
 # What are arrow functions?
-
 An arrow function expression is a compact alternative to a traditional function expression, but is limited and can't be used in all situations.
 There are differences between arrow functions and traditional functions, as well as some limitations:
 
@@ -454,8 +456,15 @@ Create React App doesn't include page routing.
 React Router is the most popular solution.
 
 We wrap our content first with <BrowserRouter>.
-Then we define our <Routes>. An application can have multiple <Routes>.
+Then we define our <Routes>. 
+An application can have multiple <Routes>.
 <Route>s can be nested. The first <Route> has a path of "/" and renders the Layout component.
 The nested <Route>s inherit and add to the parent route.
 The Home component route does not have a path but has an index attribute. That specifies this route as the default route for the parent route, which is /.
 Setting the path to * will act as a catch-all for any undefined URLs. This is great for a 404 error page.
+
+# What does JSX use for compileing ?
+
+We need transpilers to compile jsx  into browser compatible version. Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments.
+
+
